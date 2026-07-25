@@ -34,9 +34,9 @@ Timeline Builder Block is a lightweight, fully native Gutenberg block for creati
 3. In the block editor, add the "Timeline Builder" block and start adding items.
 
 == Development ==
- 
+
 Public source code repository:
-https://github.com/wpbranddigital/SupportFlow-Chatbot-Documentation-Builder
+https://github.com/wpbranddigital/timeline-builder-block
 
 Build Instructions:
 
