@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "timeline-builder/timeline",
+  "version": "1.0.0",
+  "title": "Timeline Builder",
+  "category": "widgets",
+  "icon": "clock",
+  "description": "Build beautiful, responsive animated timelines with vertical, horizontal, or one-sided layouts.",
+  "keywords": [
+    "timeline",
+    "history",
+    "roadmap",
+    "steps",
+    "milestones"
+  ],
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "anchor": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": []
+    },
+    "layout": {
+      "type": "string",
+      "default": "vertical-alternate"
+    },
+    "lineColor": {
+      "type": "string",
+      "default": "#e2e8f0"
+    },
+    "accentColor": {
+      "type": "string",
+      "default": "#4f46e5"
+    },
+    "cardBackground": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#0f172a"
+    },
+    "dateColor": {
+      "type": "string",
+      "default": "#64748b"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#475569"
+    },
+    "animation": {
+      "type": "string",
+      "default": "fade-up"
+    },
+    "animationDuration": {
+      "type": "number",
+      "default": 600
+    },
+    "markerStyle": {
+      "type": "string",
+      "default": "dot"
+    }
+  },
+  "textdomain": "timeline-builder-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

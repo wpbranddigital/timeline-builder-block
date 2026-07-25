@@ -1,0 +1,20 @@
+{
+	"name": "timeline-builder-block",
+	"version": "1.0.0",
+	"description": "A native Gutenberg block to build responsive animated timelines.",
+	"author": "Timeline Builder",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "wp-scripts lint-js",
+		"lint:css": "wp-scripts lint-style"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.0.0"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^15.2.0"
+	}
+}

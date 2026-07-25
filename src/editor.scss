@@ -1,0 +1,75 @@
+/**
+ * Editor-only styles for Timeline Builder.
+ */
+
+.tlbb-timeline {
+	.tlbb-empty {
+		text-align: center;
+		padding: 40px 20px;
+		border: 2px dashed var(--tlbb-line);
+		border-radius: 14px;
+
+		p {
+			margin: 0 0 16px;
+			color: var(--tlbb-date);
+		}
+	}
+
+	/* Disable frontend hide-on-load animation inside the editor */
+	.tlbb-item {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+
+	.tlbb-item-toolbar {
+		display: flex;
+		justify-content: flex-end;
+		gap: 2px;
+		margin-bottom: 8px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid var(--tlbb-line);
+	}
+
+	.tlbb-item-controls {
+		margin-top: 16px;
+		padding-top: 14px;
+		border-top: 1px dashed var(--tlbb-line);
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.tlbb-media-row {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.tlbb-url-control {
+		.tlbb-url-label {
+			display: block;
+			font-size: 11px;
+			font-weight: 500;
+			text-transform: uppercase;
+			margin-bottom: 4px;
+			color: #1e1e1e;
+		}
+	}
+
+	.tlbb-add-row {
+		margin-top: 24px;
+		text-align: center;
+	}
+
+	/* Keep editor RichText fields readable regardless of alternating text-align */
+	.tlbb-card {
+		text-align: left;
+	}
+}
+
+/* In editor, alternating markers can overlap toolbars; nudge z-index */
+.tlbb-layout-vertical-alternate .tlbb-marker {
+	z-index: 3;
+}
