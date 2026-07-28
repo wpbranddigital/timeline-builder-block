@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "timeline-builder/timeline",
-  "version": "1.0.0",
-  "title": "Timeline Builder",
+  "name": "wbd-timeline-builder/timeline",
+  "version": "1.0.1",
+  "title": "WBD Timeline Builder",
   "category": "widgets",
   "icon": "clock",
   "description": "Build beautiful, responsive animated timelines with vertical, horizontal, or one-sided layouts.",
@@ -72,7 +72,7 @@
       "default": "dot"
     }
   },
-  "textdomain": "timeline-builder-block",
+  "textdomain": "wbd-timeline-builder",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

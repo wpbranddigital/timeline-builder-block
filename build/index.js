@@ -33,39 +33,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const LAYOUTS = [{
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Vertical (alternating)', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Vertical (alternating)', 'wbd-timeline-builder'),
   value: 'vertical-alternate'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Vertical (one-sided)', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Vertical (one-sided)', 'wbd-timeline-builder'),
   value: 'vertical-one-sided'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Horizontal', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Horizontal', 'wbd-timeline-builder'),
   value: 'horizontal'
 }];
 const ANIMATIONS = [{
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('None', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('None', 'wbd-timeline-builder'),
   value: 'none'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fade up', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fade up', 'wbd-timeline-builder'),
   value: 'fade-up'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fade in', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fade in', 'wbd-timeline-builder'),
   value: 'fade-in'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Slide in', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Slide in', 'wbd-timeline-builder'),
   value: 'slide-in'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Zoom in', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Zoom in', 'wbd-timeline-builder'),
   value: 'zoom-in'
 }];
 const MARKERS = [{
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Dot', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Dot', 'wbd-timeline-builder'),
   value: 'dot'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ring', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ring', 'wbd-timeline-builder'),
   value: 'ring'
 }, {
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Icon', 'timeline-builder-block'),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Icon', 'wbd-timeline-builder'),
   value: 'icon'
 }];
 const emptyItem = () => ({
@@ -82,21 +82,21 @@ const emptyItem = () => ({
 });
 const defaultItems = () => [{
   ...emptyItem(),
-  date: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('2021', 'timeline-builder-block'),
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('The Beginning', 'timeline-builder-block'),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Every great story starts somewhere. Describe the first milestone of your journey here.', 'timeline-builder-block'),
+  date: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('2021', 'wbd-timeline-builder'),
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('The Beginning', 'wbd-timeline-builder'),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Every great story starts somewhere. Describe the first milestone of your journey here.', 'wbd-timeline-builder'),
   iconDashicon: 'flag'
 }, {
   ...emptyItem(),
-  date: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('2023', 'timeline-builder-block'),
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Growing Strong', 'timeline-builder-block'),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Highlight a key moment of growth, a product launch, or an achievement worth remembering.', 'timeline-builder-block'),
+  date: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('2023', 'wbd-timeline-builder'),
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Growing Strong', 'wbd-timeline-builder'),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Highlight a key moment of growth, a product launch, or an achievement worth remembering.', 'wbd-timeline-builder'),
   iconDashicon: 'chart-line'
 }, {
   ...emptyItem(),
-  date: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Today', 'timeline-builder-block'),
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Where We Are Now', 'timeline-builder-block'),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Share your current status and what comes next. Edit or remove these sample items anytime.', 'timeline-builder-block'),
+  date: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Today', 'wbd-timeline-builder'),
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Where We Are Now', 'wbd-timeline-builder'),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Share your current status and what comes next. Edit or remove these sample items anytime.', 'wbd-timeline-builder'),
   iconDashicon: 'awards'
 }];
 function Edit({
@@ -172,10 +172,10 @@ function Edit({
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Layout', 'timeline-builder-block'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Layout', 'wbd-timeline-builder'),
         initialOpen: true,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Timeline layout', 'timeline-builder-block'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Timeline layout', 'wbd-timeline-builder'),
           value: layout,
           options: LAYOUTS,
           onChange: value => setAttributes({
@@ -183,7 +183,7 @@ function Edit({
           }),
           __nextHasNoMarginBottom: true
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Marker style', 'timeline-builder-block'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Marker style', 'wbd-timeline-builder'),
           value: markerStyle,
           options: MARKERS,
           onChange: value => setAttributes({
@@ -192,10 +192,10 @@ function Edit({
           __nextHasNoMarginBottom: true
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Animation', 'timeline-builder-block'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Animation', 'wbd-timeline-builder'),
         initialOpen: false,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Scroll animation', 'timeline-builder-block'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Scroll animation', 'wbd-timeline-builder'),
           value: animation,
           options: ANIMATIONS,
           onChange: value => setAttributes({
@@ -203,7 +203,7 @@ function Edit({
           }),
           __nextHasNoMarginBottom: true
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Duration (ms)', 'timeline-builder-block'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Duration (ms)', 'wbd-timeline-builder'),
           value: animationDuration,
           onChange: value => setAttributes({
             animationDuration: value
@@ -214,44 +214,44 @@ function Edit({
           __nextHasNoMarginBottom: true
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Colors', 'timeline-builder-block'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Colors', 'wbd-timeline-builder'),
         initialOpen: false,
         colorSettings: [{
           value: accentColor,
           onChange: c => setAttributes({
             accentColor: c
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Accent / markers', 'timeline-builder-block')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Accent / markers', 'wbd-timeline-builder')
         }, {
           value: lineColor,
           onChange: c => setAttributes({
             lineColor: c
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Line', 'timeline-builder-block')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Line', 'wbd-timeline-builder')
         }, {
           value: cardBackground,
           onChange: c => setAttributes({
             cardBackground: c
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Card background', 'timeline-builder-block')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Card background', 'wbd-timeline-builder')
         }, {
           value: titleColor,
           onChange: c => setAttributes({
             titleColor: c
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title', 'timeline-builder-block')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title', 'wbd-timeline-builder')
         }, {
           value: dateColor,
           onChange: c => setAttributes({
             dateColor: c
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date', 'timeline-builder-block')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date', 'wbd-timeline-builder')
         }, {
           value: textColor,
           onChange: c => setAttributes({
             textColor: c
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Description text', 'timeline-builder-block')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Description text', 'wbd-timeline-builder')
         }]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -268,12 +268,12 @@ function Edit({
         children: [items.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "tlbb-empty",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('No timeline items yet.', 'timeline-builder-block')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('No timeline items yet.', 'wbd-timeline-builder')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
             variant: "primary",
             icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
             onClick: addItem,
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add first item', 'timeline-builder-block')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add first item', 'wbd-timeline-builder')
           })]
         }), items.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "tlbb-item",
@@ -288,28 +288,28 @@ function Edit({
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "tlbb-item-toolbar",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
-                text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move up', 'timeline-builder-block'),
+                text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move up', 'wbd-timeline-builder'),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
                   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
                   onClick: () => moveItem(index, -1),
                   disabled: index === 0,
-                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move up', 'timeline-builder-block')
+                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move up', 'wbd-timeline-builder')
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
-                text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move down', 'timeline-builder-block'),
+                text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move down', 'wbd-timeline-builder'),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
                   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
                   onClick: () => moveItem(index, 1),
                   disabled: index === items.length - 1,
-                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move down', 'timeline-builder-block')
+                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Move down', 'wbd-timeline-builder')
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
-                text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove item', 'timeline-builder-block'),
+                text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove item', 'wbd-timeline-builder'),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
                   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
                   isDestructive: true,
                   onClick: () => removeItem(index),
-                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove item', 'timeline-builder-block')
+                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove item', 'wbd-timeline-builder')
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -319,7 +319,7 @@ function Edit({
               onChange: value => updateItem(index, {
                 date: value
               }),
-              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date / label…', 'timeline-builder-block'),
+              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Date / label…', 'wbd-timeline-builder'),
               allowedFormats: []
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
               tagName: "h3",
@@ -328,7 +328,7 @@ function Edit({
               onChange: value => updateItem(index, {
                 title: value
               }),
-              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title…', 'timeline-builder-block'),
+              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title…', 'wbd-timeline-builder'),
               allowedFormats: ['core/bold', 'core/italic']
             }), item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "tlbb-image",
@@ -343,12 +343,12 @@ function Edit({
               onChange: value => updateItem(index, {
                 description: value
               }),
-              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Description…', 'timeline-builder-block')
+              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Description…', 'wbd-timeline-builder')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "tlbb-item-controls",
               children: [markerStyle === 'icon' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Dashicon name', 'timeline-builder-block'),
-                help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('e.g. star-filled, calendar, awards', 'timeline-builder-block'),
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Dashicon name', 'wbd-timeline-builder'),
+                help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('e.g. star-filled, calendar, awards', 'wbd-timeline-builder'),
                 value: item.iconDashicon,
                 onChange: value => updateItem(index, {
                   iconDashicon: value
@@ -370,7 +370,7 @@ function Edit({
                     }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
                       variant: "secondary",
                       onClick: open,
-                      children: item.imageUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Replace image', 'timeline-builder-block') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add image', 'timeline-builder-block')
+                      children: item.imageUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Replace image', 'wbd-timeline-builder') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add image', 'wbd-timeline-builder')
                     })
                   })
                 }), item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
@@ -381,10 +381,10 @@ function Edit({
                     imageId: 0,
                     imageAlt: ''
                   }),
-                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove image', 'timeline-builder-block')
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove image', 'wbd-timeline-builder')
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Link text', 'timeline-builder-block'),
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Link text', 'wbd-timeline-builder'),
                 value: item.linkText,
                 onChange: value => updateItem(index, {
                   linkText: value
@@ -394,7 +394,7 @@ function Edit({
                 className: "tlbb-url-control",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   className: "tlbb-url-label",
-                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Link URL', 'timeline-builder-block')
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Link URL', 'wbd-timeline-builder')
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.URLInput, {
                   value: item.linkUrl,
                   onChange: url => updateItem(index, {
@@ -412,7 +412,7 @@ function Edit({
           variant: "primary",
           icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
           onClick: addItem,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add timeline item', 'timeline-builder-block')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add timeline item', 'wbd-timeline-builder')
         })
       })]
     })]
@@ -659,7 +659,7 @@ var trash_default = /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODUL
   \************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"timeline-builder/timeline","version":"1.0.0","title":"Timeline Builder","category":"widgets","icon":"clock","description":"Build beautiful, responsive animated timelines with vertical, horizontal, or one-sided layouts.","keywords":["timeline","history","roadmap","steps","milestones"],"supports":{"html":false,"align":["wide","full"],"anchor":true,"spacing":{"margin":true,"padding":true}},"attributes":{"items":{"type":"array","default":[]},"layout":{"type":"string","default":"vertical-alternate"},"lineColor":{"type":"string","default":"#e2e8f0"},"accentColor":{"type":"string","default":"#4f46e5"},"cardBackground":{"type":"string","default":"#ffffff"},"titleColor":{"type":"string","default":"#0f172a"},"dateColor":{"type":"string","default":"#64748b"},"textColor":{"type":"string","default":"#475569"},"animation":{"type":"string","default":"fade-up"},"animationDuration":{"type":"number","default":600},"markerStyle":{"type":"string","default":"dot"}},"textdomain":"timeline-builder-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wbd-timeline-builder/timeline","version":"1.0.1","title":"WBD Timeline Builder","category":"widgets","icon":"clock","description":"Build beautiful, responsive animated timelines with vertical, horizontal, or one-sided layouts.","keywords":["timeline","history","roadmap","steps","milestones"],"supports":{"html":false,"align":["wide","full"],"anchor":true,"spacing":{"margin":true,"padding":true}},"attributes":{"items":{"type":"array","default":[]},"layout":{"type":"string","default":"vertical-alternate"},"lineColor":{"type":"string","default":"#e2e8f0"},"accentColor":{"type":"string","default":"#4f46e5"},"cardBackground":{"type":"string","default":"#ffffff"},"titleColor":{"type":"string","default":"#0f172a"},"dateColor":{"type":"string","default":"#64748b"},"textColor":{"type":"string","default":"#475569"},"animation":{"type":"string","default":"fade-up"},"animationDuration":{"type":"number","default":600},"markerStyle":{"type":"string","default":"dot"}},"textdomain":"wbd-timeline-builder","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ }
 
@@ -835,7 +835,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		const chunkLoadingGlobal = globalThis["webpackChunktimeline_builder_block"] ||= [];
+/******/ 		const chunkLoadingGlobal = globalThis["webpackChunkwbd_timeline_builder"] ||= [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

@@ -1,8 +1,8 @@
 <?php
 /**
- * Admin dashboard for Timeline Builder Block.
+ * Admin dashboard for WBD Timeline Builder.
  *
- * @package TimelineBuilderBlock
+ * @package WBDTimelineBuilder
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,14 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Registers and renders the plugin admin dashboard page.
  */
-class Timeline_Builder_Block_Admin_Dashboard {
+class WBD_Timeline_Builder_Admin_Dashboard {
 
 	/**
 	 * Menu / page slug.
 	 *
 	 * @var string
 	 */
-	const SLUG = 'timeline-builder-block';
+	const SLUG = 'wbd-timeline-builder';
 
 	/**
 	 * Hook everything up.
@@ -38,8 +38,8 @@ class Timeline_Builder_Block_Admin_Dashboard {
 	 */
 	public function register_menu() {
 		add_menu_page(
-			__( 'Timeline Builder', 'timeline-builder-block' ),
-			__( 'Timeline Builder', 'timeline-builder-block' ),
+			__( 'Timeline Builder', 'wbd-timeline-builder' ),
+			__( 'Timeline Builder', 'wbd-timeline-builder' ),
 			'manage_options',
 			self::SLUG,
 			array( $this, 'render_page' ),
@@ -60,10 +60,10 @@ class Timeline_Builder_Block_Admin_Dashboard {
 		}
 
 		wp_enqueue_style(
-			'timeline-builder-block-admin',
-			TIMELINE_BUILDER_BLOCK_URL . 'includes/admin-dashboard.css',
+			'wbd-timeline-builder-admin',
+			WBD_TIMELINE_BUILDER_URL . 'includes/admin-dashboard.css',
 			array(),
-			TIMELINE_BUILDER_BLOCK_VERSION
+			WBD_TIMELINE_BUILDER_VERSION
 		);
 	}
 
@@ -107,9 +107,9 @@ class Timeline_Builder_Block_Admin_Dashboard {
 		$active = $this->get_active_tab();
 
 		$tabs = array(
-			'welcome'    => __( 'Welcome', 'timeline-builder-block' ),
-			'how-to-use' => __( 'How to Use', 'timeline-builder-block' ),
-			'changelog'  => __( 'Changelog', 'timeline-builder-block' ),
+			'welcome'    => __( 'Welcome', 'wbd-timeline-builder' ),
+			'how-to-use' => __( 'How to Use', 'wbd-timeline-builder' ),
+			'changelog'  => __( 'Changelog', 'wbd-timeline-builder' ),
 		);
 		?>
 		<div class="tlbb-admin">
@@ -117,22 +117,22 @@ class Timeline_Builder_Block_Admin_Dashboard {
 				<div class="tlbb-admin__brand">
 					<span class="tlbb-admin__logo dashicons dashicons-clock"></span>
 					<div>
-						<h1><?php esc_html_e( 'Timeline Builder Block', 'timeline-builder-block' ); ?></h1>
-						<p><?php esc_html_e( 'Build beautiful, responsive animated timelines — natively in Gutenberg.', 'timeline-builder-block' ); ?></p>
+						<h1><?php esc_html_e( 'WBD Timeline Builder', 'wbd-timeline-builder' ); ?></h1>
+						<p><?php esc_html_e( 'Build beautiful, responsive animated timelines — natively in Gutenberg.', 'wbd-timeline-builder' ); ?></p>
 					</div>
 				</div>
 				<span class="tlbb-admin__version">
 					<?php
 					printf(
 						/* translators: %s: version number */
-						esc_html__( 'v%s', 'timeline-builder-block' ),
-						esc_html( TIMELINE_BUILDER_BLOCK_VERSION )
+						esc_html__( 'v%s', 'wbd-timeline-builder' ),
+						esc_html( WBD_TIMELINE_BUILDER_VERSION )
 					);
 					?>
 				</span>
 			</header>
 
-			<nav class="tlbb-admin__tabs" aria-label="<?php esc_attr_e( 'Dashboard sections', 'timeline-builder-block' ); ?>">
+			<nav class="tlbb-admin__tabs" aria-label="<?php esc_attr_e( 'Dashboard sections', 'wbd-timeline-builder' ); ?>">
 				<?php foreach ( $tabs as $slug => $label ) : ?>
 					<a
 						class="tlbb-admin__tab <?php echo $active === $slug ? 'is-active' : ''; ?>"
@@ -161,7 +161,7 @@ class Timeline_Builder_Block_Admin_Dashboard {
 			</main>
 
 			<footer class="tlbb-admin__footer">
-				<p><?php esc_html_e( 'Timeline Builder Block — made for the block editor.', 'timeline-builder-block' ); ?></p>
+				<p><?php esc_html_e( 'Timeline Builder Block — made for the block editor.', 'wbd-timeline-builder' ); ?></p>
 			</footer>
 		</div>
 		<?php
@@ -178,43 +178,43 @@ class Timeline_Builder_Block_Admin_Dashboard {
 		$features = array(
 			array(
 				'icon'  => 'layout',
-				'title' => __( 'Three layouts', 'timeline-builder-block' ),
-				'text'  => __( 'Vertical alternating, vertical one-sided, and horizontal scroll-snap.', 'timeline-builder-block' ),
+				'title' => __( 'Three layouts', 'wbd-timeline-builder' ),
+				'text'  => __( 'Vertical alternating, vertical one-sided, and horizontal scroll-snap.', 'wbd-timeline-builder' ),
 			),
 			array(
 				'icon'  => 'images-alt2',
-				'title' => __( 'Rich items', 'timeline-builder-block' ),
-				'text'  => __( 'Title, date, description, icon, image, and link for every entry.', 'timeline-builder-block' ),
+				'title' => __( 'Rich items', 'wbd-timeline-builder' ),
+				'text'  => __( 'Title, date, description, icon, image, and link for every entry.', 'wbd-timeline-builder' ),
 			),
 			array(
 				'icon'  => 'controls-play',
-				'title' => __( 'Scroll animations', 'timeline-builder-block' ),
-				'text'  => __( 'Fade, slide, and zoom reveals — with reduced-motion respected.', 'timeline-builder-block' ),
+				'title' => __( 'Scroll animations', 'wbd-timeline-builder' ),
+				'text'  => __( 'Fade, slide, and zoom reveals — with reduced-motion respected.', 'wbd-timeline-builder' ),
 			),
 			array(
 				'icon'  => 'admin-appearance',
-				'title' => __( 'Full color control', 'timeline-builder-block' ),
-				'text'  => __( 'Style markers, lines, cards, and text to match your brand.', 'timeline-builder-block' ),
+				'title' => __( 'Full color control', 'wbd-timeline-builder' ),
+				'text'  => __( 'Style markers, lines, cards, and text to match your brand.', 'wbd-timeline-builder' ),
 			),
 			array(
 				'icon'  => 'smartphone',
-				'title' => __( 'Responsive', 'timeline-builder-block' ),
-				'text'  => __( 'Alternating layouts collapse cleanly to one column on mobile.', 'timeline-builder-block' ),
+				'title' => __( 'Responsive', 'wbd-timeline-builder' ),
+				'text'  => __( 'Alternating layouts collapse cleanly to one column on mobile.', 'wbd-timeline-builder' ),
 			),
 			array(
 				'icon'  => 'shield',
-				'title' => __( 'Secure & native', 'timeline-builder-block' ),
-				'text'  => __( 'Server-side rendered with fully escaped output. No bloat.', 'timeline-builder-block' ),
+				'title' => __( 'Secure & native', 'wbd-timeline-builder' ),
+				'text'  => __( 'Server-side rendered with fully escaped output. No bloat.', 'wbd-timeline-builder' ),
 			),
 		);
 		?>
 		<section class="tlbb-admin__welcome">
 			<div class="tlbb-admin__welcome-intro">
-				<h2><?php esc_html_e( 'Welcome aboard 👋', 'timeline-builder-block' ); ?></h2>
-				<p><?php esc_html_e( 'Thanks for installing Timeline Builder Block. Add the “Timeline Builder” block to any page or post and you are ready to go — three sample items are included so you can see it in action instantly.', 'timeline-builder-block' ); ?></p>
+				<h2><?php esc_html_e( 'Welcome aboard 👋', 'wbd-timeline-builder' ); ?></h2>
+				<p><?php esc_html_e( 'Thanks for installing Timeline Builder Block. Add the “Timeline Builder” block to any page or post and you are ready to go — three sample items are included so you can see it in action instantly.', 'wbd-timeline-builder' ); ?></p>
 				<a class="tlbb-admin__btn" href="<?php echo $editor_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>">
 					<span class="dashicons dashicons-plus-alt2"></span>
-					<?php esc_html_e( 'Create a new page', 'timeline-builder-block' ); ?>
+					<?php esc_html_e( 'Create a new page', 'wbd-timeline-builder' ); ?>
 				</a>
 			</div>
 
@@ -239,34 +239,34 @@ class Timeline_Builder_Block_Admin_Dashboard {
 	private function render_how_to_use() {
 		$steps = array(
 			array(
-				'title' => __( 'Add the block', 'timeline-builder-block' ),
-				'text'  => __( 'Edit any page or post, click the + inserter, search for “Timeline Builder”, and insert it. Three sample items load automatically.', 'timeline-builder-block' ),
+				'title' => __( 'Add the block', 'wbd-timeline-builder' ),
+				'text'  => __( 'Edit any page or post, click the + inserter, search for “Timeline Builder”, and insert it. Three sample items load automatically.', 'wbd-timeline-builder' ),
 			),
 			array(
-				'title' => __( 'Edit your items', 'timeline-builder-block' ),
-				'text'  => __( 'Click any title, date, or description to type directly. Use the toolbar on each card to move items up/down or remove them, and “Add timeline item” to add more.', 'timeline-builder-block' ),
+				'title' => __( 'Edit your items', 'wbd-timeline-builder' ),
+				'text'  => __( 'Click any title, date, or description to type directly. Use the toolbar on each card to move items up/down or remove them, and “Add timeline item” to add more.', 'wbd-timeline-builder' ),
 			),
 			array(
-				'title' => __( 'Add media & links', 'timeline-builder-block' ),
-				'text'  => __( 'Inside each item you can add an image from the media library, set a Dashicon name for icon markers, and add a link with custom text.', 'timeline-builder-block' ),
+				'title' => __( 'Add media & links', 'wbd-timeline-builder' ),
+				'text'  => __( 'Inside each item you can add an image from the media library, set a Dashicon name for icon markers, and add a link with custom text.', 'wbd-timeline-builder' ),
 			),
 			array(
-				'title' => __( 'Pick a layout', 'timeline-builder-block' ),
-				'text'  => __( 'Open the block sidebar (Settings). Under “Layout”, choose vertical alternating, vertical one-sided, or horizontal, and select a marker style: dot, ring, or icon.', 'timeline-builder-block' ),
+				'title' => __( 'Pick a layout', 'wbd-timeline-builder' ),
+				'text'  => __( 'Open the block sidebar (Settings). Under “Layout”, choose vertical alternating, vertical one-sided, or horizontal, and select a marker style: dot, ring, or icon.', 'wbd-timeline-builder' ),
 			),
 			array(
-				'title' => __( 'Set animation', 'timeline-builder-block' ),
-				'text'  => __( 'In the “Animation” panel, choose a scroll reveal (fade up, fade in, slide in, zoom in) and tune its duration. Motion is disabled automatically for visitors who prefer reduced motion.', 'timeline-builder-block' ),
+				'title' => __( 'Set animation', 'wbd-timeline-builder' ),
+				'text'  => __( 'In the “Animation” panel, choose a scroll reveal (fade up, fade in, slide in, zoom in) and tune its duration. Motion is disabled automatically for visitors who prefer reduced motion.', 'wbd-timeline-builder' ),
 			),
 			array(
-				'title' => __( 'Style the colors', 'timeline-builder-block' ),
-				'text'  => __( 'Use the “Colors” panel to set the accent/marker, line, card background, title, date, and description colors so the timeline matches your theme.', 'timeline-builder-block' ),
+				'title' => __( 'Style the colors', 'wbd-timeline-builder' ),
+				'text'  => __( 'Use the “Colors” panel to set the accent/marker, line, card background, title, date, and description colors so the timeline matches your theme.', 'wbd-timeline-builder' ),
 			),
 		);
 		?>
 		<section class="tlbb-admin__howto">
-			<h2><?php esc_html_e( 'How to use Timeline Builder', 'timeline-builder-block' ); ?></h2>
-			<p class="tlbb-admin__lede"><?php esc_html_e( 'From zero to a polished timeline in six short steps.', 'timeline-builder-block' ); ?></p>
+			<h2><?php esc_html_e( 'How to use Timeline Builder', 'wbd-timeline-builder' ); ?></h2>
+			<p class="tlbb-admin__lede"><?php esc_html_e( 'From zero to a polished timeline in six short steps.', 'wbd-timeline-builder' ); ?></p>
 
 			<ol class="tlbb-admin__steps">
 				<?php foreach ( $steps as $i => $step ) : ?>
@@ -282,7 +282,7 @@ class Timeline_Builder_Block_Admin_Dashboard {
 
 			<div class="tlbb-admin__tip">
 				<span class="dashicons dashicons-lightbulb"></span>
-				<p><?php esc_html_e( 'Tip: The horizontal layout is swipeable on touch devices and snaps to each card. The alternating layout automatically becomes a single clean column on small screens.', 'timeline-builder-block' ); ?></p>
+				<p><?php esc_html_e( 'Tip: The horizontal layout is swipeable on touch devices and snaps to each card. The alternating layout automatically becomes a single clean column on small screens.', 'wbd-timeline-builder' ); ?></p>
 			</div>
 		</section>
 		<?php
@@ -296,30 +296,38 @@ class Timeline_Builder_Block_Admin_Dashboard {
 	private function render_changelog() {
 		$releases = array(
 			array(
+				'version' => '1.0.1',
+				'date'    => __( 'WordPress.org compliance update', 'wbd-timeline-builder' ),
+				'tag'     => 'improved',
+				'changes' => array(
+					__( 'Updated plugin display name to WBD Timeline Builder and slug/textdomain to wbd-timeline-builder for WordPress.org compliance.', 'wbd-timeline-builder' ),
+				),
+			),
+			array(
 				'version' => '1.0.0',
-				'date'    => __( 'Initial release', 'timeline-builder-block' ),
+				'date'    => __( 'Initial release', 'wbd-timeline-builder' ),
 				'tag'     => 'new',
 				'changes' => array(
-					__( 'Native Gutenberg timeline block with a single-block repeater editor.', 'timeline-builder-block' ),
-					__( 'Three layouts: vertical alternating, vertical one-sided, and horizontal.', 'timeline-builder-block' ),
-					__( 'Per-item title, date, description, Dashicon, image, and link.', 'timeline-builder-block' ),
-					__( 'Scroll-triggered animations (fade up, fade in, slide in, zoom in) with reduced-motion support.', 'timeline-builder-block' ),
-					__( 'Full color controls and dot / ring / icon marker styles.', 'timeline-builder-block' ),
-					__( 'Responsive layouts and secure server-side rendering.', 'timeline-builder-block' ),
-					__( 'Three sample items pre-loaded on insert, plus an admin dashboard.', 'timeline-builder-block' ),
+					__( 'Native Gutenberg timeline block with a single-block repeater editor.', 'wbd-timeline-builder' ),
+					__( 'Three layouts: vertical alternating, vertical one-sided, and horizontal.', 'wbd-timeline-builder' ),
+					__( 'Per-item title, date, description, Dashicon, image, and link.', 'wbd-timeline-builder' ),
+					__( 'Scroll-triggered animations (fade up, fade in, slide in, zoom in) with reduced-motion support.', 'wbd-timeline-builder' ),
+					__( 'Full color controls and dot / ring / icon marker styles.', 'wbd-timeline-builder' ),
+					__( 'Responsive layouts and secure server-side rendering.', 'wbd-timeline-builder' ),
+					__( 'Three sample items pre-loaded on insert, plus an admin dashboard.', 'wbd-timeline-builder' ),
 				),
 			),
 		);
 
 		$tag_labels = array(
-			'new'      => __( 'New', 'timeline-builder-block' ),
-			'improved' => __( 'Improved', 'timeline-builder-block' ),
-			'fixed'    => __( 'Fixed', 'timeline-builder-block' ),
+			'new'      => __( 'New', 'wbd-timeline-builder' ),
+			'improved' => __( 'Improved', 'wbd-timeline-builder' ),
+			'fixed'    => __( 'Fixed', 'wbd-timeline-builder' ),
 		);
 		?>
 		<section class="tlbb-admin__changelog">
-			<h2><?php esc_html_e( 'Changelog', 'timeline-builder-block' ); ?></h2>
-			<p class="tlbb-admin__lede"><?php esc_html_e( 'Every notable change, newest first.', 'timeline-builder-block' ); ?></p>
+			<h2><?php esc_html_e( 'Changelog', 'wbd-timeline-builder' ); ?></h2>
+			<p class="tlbb-admin__lede"><?php esc_html_e( 'Every notable change, newest first.', 'wbd-timeline-builder' ); ?></p>
 
 			<div class="tlbb-admin__releases">
 				<?php foreach ( $releases as $release ) : ?>
@@ -344,4 +352,8 @@ class Timeline_Builder_Block_Admin_Dashboard {
 		</section>
 		<?php
 	}
+}
+
+if ( ! class_exists( 'Timeline_Builder_Block_Admin_Dashboard' ) ) {
+	class_alias( 'WBD_Timeline_Builder_Admin_Dashboard', 'Timeline_Builder_Block_Admin_Dashboard' );
 }

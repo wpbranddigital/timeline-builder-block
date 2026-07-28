@@ -1,8 +1,8 @@
 {
-	"name": "timeline-builder-block",
-	"version": "1.0.0",
+	"name": "wbd-timeline-builder",
+	"version": "1.0.1",
 	"description": "A native Gutenberg block to build responsive animated timelines.",
-	"author": "Timeline Builder",
+	"author": "WBD Timeline Builder",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {

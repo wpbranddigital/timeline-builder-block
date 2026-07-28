@@ -1,10 +1,10 @@
-=== Timeline Builder Block ===
+=== WBD Timeline Builder ===
 Contributors: wpbranddigital25
 Tags: timeline, gutenberg, block, roadmap, history
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later 
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Build beautiful, responsive animated timelines with a native Gutenberg block.
 
 == Description ==
 
-Timeline Builder Block is a lightweight, fully native Gutenberg block for creating animated timelines. It is built with the WordPress block editor's own components — no page builders, no bloat.
+WBD Timeline Builder is a lightweight, fully native Gutenberg block for creating animated timelines. It is built with the WordPress block editor's own components — no page builders, no bloat.
 
 **Features**
 
@@ -29,9 +29,9 @@ Timeline Builder Block is a lightweight, fully native Gutenberg block for creati
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/timeline-builder-block` directory, or install through the WordPress plugins screen.
+1. Upload the plugin files to the `/wp-content/plugins/wbd-timeline-builder` directory, or install through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. In the block editor, add the "Timeline Builder" block and start adding items.
+3. In the block editor, add the "WBD Timeline Builder" block and start adding items.
 
 == Development ==
 
@@ -43,7 +43,7 @@ Build Instructions:
 1. npm install
 2. npm run build
 3. npm run start (development)
-Timeline Builder Block is built using @wordpress/scripts.
+WBD Timeline Builder is built using @wordpress/scripts.
 
 == Frequently Asked Questions ==
 
@@ -62,10 +62,16 @@ No. It uses only native WordPress packages and vanilla JavaScript.
 
 == Changelog ==
 
+= 1.0.1 =
+* Updated plugin display name to WBD Timeline Builder and slug/textdomain to wbd-timeline-builder for WordPress.org compliance.
+
 = 1.0.0 =
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Updated plugin display name and text domain for WordPress.org compliance.
 
 = 1.0.0 =
 Initial release.

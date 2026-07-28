@@ -1,8 +1,8 @@
 <?php
 /**
- * Server-side rendering for the Timeline Builder block.
+ * Server-side rendering for the WBD Timeline Builder block.
  *
- * @package TimelineBuilderBlock
+ * @package WBDTimelineBuilder
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Block default content.

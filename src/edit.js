@@ -20,23 +20,23 @@ import {
 import { plus, trash, chevronUp, chevronDown } from '@wordpress/icons';
 
 const LAYOUTS = [
-	{ label: __( 'Vertical (alternating)', 'timeline-builder-block' ), value: 'vertical-alternate' },
-	{ label: __( 'Vertical (one-sided)', 'timeline-builder-block' ), value: 'vertical-one-sided' },
-	{ label: __( 'Horizontal', 'timeline-builder-block' ), value: 'horizontal' },
+	{ label: __( 'Vertical (alternating)', 'wbd-timeline-builder' ), value: 'vertical-alternate' },
+	{ label: __( 'Vertical (one-sided)', 'wbd-timeline-builder' ), value: 'vertical-one-sided' },
+	{ label: __( 'Horizontal', 'wbd-timeline-builder' ), value: 'horizontal' },
 ];
 
 const ANIMATIONS = [
-	{ label: __( 'None', 'timeline-builder-block' ), value: 'none' },
-	{ label: __( 'Fade up', 'timeline-builder-block' ), value: 'fade-up' },
-	{ label: __( 'Fade in', 'timeline-builder-block' ), value: 'fade-in' },
-	{ label: __( 'Slide in', 'timeline-builder-block' ), value: 'slide-in' },
-	{ label: __( 'Zoom in', 'timeline-builder-block' ), value: 'zoom-in' },
+	{ label: __( 'None', 'wbd-timeline-builder' ), value: 'none' },
+	{ label: __( 'Fade up', 'wbd-timeline-builder' ), value: 'fade-up' },
+	{ label: __( 'Fade in', 'wbd-timeline-builder' ), value: 'fade-in' },
+	{ label: __( 'Slide in', 'wbd-timeline-builder' ), value: 'slide-in' },
+	{ label: __( 'Zoom in', 'wbd-timeline-builder' ), value: 'zoom-in' },
 ];
 
 const MARKERS = [
-	{ label: __( 'Dot', 'timeline-builder-block' ), value: 'dot' },
-	{ label: __( 'Ring', 'timeline-builder-block' ), value: 'ring' },
-	{ label: __( 'Icon', 'timeline-builder-block' ), value: 'icon' },
+	{ label: __( 'Dot', 'wbd-timeline-builder' ), value: 'dot' },
+	{ label: __( 'Ring', 'wbd-timeline-builder' ), value: 'ring' },
+	{ label: __( 'Icon', 'wbd-timeline-builder' ), value: 'icon' },
 ];
 
 const emptyItem = () => ( {
@@ -55,31 +55,31 @@ const emptyItem = () => ( {
 const defaultItems = () => [
 	{
 		...emptyItem(),
-		date: __( '2021', 'timeline-builder-block' ),
-		title: __( 'The Beginning', 'timeline-builder-block' ),
+		date: __( '2021', 'wbd-timeline-builder' ),
+		title: __( 'The Beginning', 'wbd-timeline-builder' ),
 		description: __(
 			'Every great story starts somewhere. Describe the first milestone of your journey here.',
-			'timeline-builder-block'
+			'wbd-timeline-builder'
 		),
 		iconDashicon: 'flag',
 	},
 	{
 		...emptyItem(),
-		date: __( '2023', 'timeline-builder-block' ),
-		title: __( 'Growing Strong', 'timeline-builder-block' ),
+		date: __( '2023', 'wbd-timeline-builder' ),
+		title: __( 'Growing Strong', 'wbd-timeline-builder' ),
 		description: __(
 			'Highlight a key moment of growth, a product launch, or an achievement worth remembering.',
-			'timeline-builder-block'
+			'wbd-timeline-builder'
 		),
 		iconDashicon: 'chart-line',
 	},
 	{
 		...emptyItem(),
-		date: __( 'Today', 'timeline-builder-block' ),
-		title: __( 'Where We Are Now', 'timeline-builder-block' ),
+		date: __( 'Today', 'wbd-timeline-builder' ),
+		title: __( 'Where We Are Now', 'wbd-timeline-builder' ),
 		description: __(
 			'Share your current status and what comes next. Edit or remove these sample items anytime.',
-			'timeline-builder-block'
+			'wbd-timeline-builder'
 		),
 		iconDashicon: 'awards',
 	},
@@ -148,16 +148,16 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Layout', 'timeline-builder-block' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Layout', 'wbd-timeline-builder' ) } initialOpen={ true }>
 					<SelectControl
-						label={ __( 'Timeline layout', 'timeline-builder-block' ) }
+						label={ __( 'Timeline layout', 'wbd-timeline-builder' ) }
 						value={ layout }
 						options={ LAYOUTS }
 						onChange={ ( value ) => setAttributes( { layout: value } ) }
 						__nextHasNoMarginBottom
 					/>
 					<SelectControl
-						label={ __( 'Marker style', 'timeline-builder-block' ) }
+						label={ __( 'Marker style', 'wbd-timeline-builder' ) }
 						value={ markerStyle }
 						options={ MARKERS }
 						onChange={ ( value ) => setAttributes( { markerStyle: value } ) }
@@ -165,16 +165,16 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Animation', 'timeline-builder-block' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Animation', 'wbd-timeline-builder' ) } initialOpen={ false }>
 					<SelectControl
-						label={ __( 'Scroll animation', 'timeline-builder-block' ) }
+						label={ __( 'Scroll animation', 'wbd-timeline-builder' ) }
 						value={ animation }
 						options={ ANIMATIONS }
 						onChange={ ( value ) => setAttributes( { animation: value } ) }
 						__nextHasNoMarginBottom
 					/>
 					<RangeControl
-						label={ __( 'Duration (ms)', 'timeline-builder-block' ) }
+						label={ __( 'Duration (ms)', 'wbd-timeline-builder' ) }
 						value={ animationDuration }
 						onChange={ ( value ) => setAttributes( { animationDuration: value } ) }
 						min={ 100 }
@@ -185,38 +185,38 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 
 				<PanelColorSettings
-					title={ __( 'Colors', 'timeline-builder-block' ) }
+					title={ __( 'Colors', 'wbd-timeline-builder' ) }
 					initialOpen={ false }
 					colorSettings={ [
 						{
 							value: accentColor,
 							onChange: ( c ) => setAttributes( { accentColor: c } ),
-							label: __( 'Accent / markers', 'timeline-builder-block' ),
+							label: __( 'Accent / markers', 'wbd-timeline-builder' ),
 						},
 						{
 							value: lineColor,
 							onChange: ( c ) => setAttributes( { lineColor: c } ),
-							label: __( 'Line', 'timeline-builder-block' ),
+							label: __( 'Line', 'wbd-timeline-builder' ),
 						},
 						{
 							value: cardBackground,
 							onChange: ( c ) => setAttributes( { cardBackground: c } ),
-							label: __( 'Card background', 'timeline-builder-block' ),
+							label: __( 'Card background', 'wbd-timeline-builder' ),
 						},
 						{
 							value: titleColor,
 							onChange: ( c ) => setAttributes( { titleColor: c } ),
-							label: __( 'Title', 'timeline-builder-block' ),
+							label: __( 'Title', 'wbd-timeline-builder' ),
 						},
 						{
 							value: dateColor,
 							onChange: ( c ) => setAttributes( { dateColor: c } ),
-							label: __( 'Date', 'timeline-builder-block' ),
+							label: __( 'Date', 'wbd-timeline-builder' ),
 						},
 						{
 							value: textColor,
 							onChange: ( c ) => setAttributes( { textColor: c } ),
-							label: __( 'Description text', 'timeline-builder-block' ),
+							label: __( 'Description text', 'wbd-timeline-builder' ),
 						},
 					] }
 				/>
@@ -227,9 +227,9 @@ export default function Edit( { attributes, setAttributes } ) {
 				<div className="tlbb-items">
 					{ items.length === 0 && (
 						<div className="tlbb-empty">
-							<p>{ __( 'No timeline items yet.', 'timeline-builder-block' ) }</p>
+							<p>{ __( 'No timeline items yet.', 'wbd-timeline-builder' ) }</p>
 							<Button variant="primary" icon={ plus } onClick={ addItem }>
-								{ __( 'Add first item', 'timeline-builder-block' ) }
+								{ __( 'Add first item', 'wbd-timeline-builder' ) }
 							</Button>
 						</div>
 					) }
@@ -244,28 +244,28 @@ export default function Edit( { attributes, setAttributes } ) {
 
 							<div className="tlbb-card">
 								<div className="tlbb-item-toolbar">
-									<Tooltip text={ __( 'Move up', 'timeline-builder-block' ) }>
+									<Tooltip text={ __( 'Move up', 'wbd-timeline-builder' ) }>
 										<Button
 											icon={ chevronUp }
 											onClick={ () => moveItem( index, -1 ) }
 											disabled={ index === 0 }
-											label={ __( 'Move up', 'timeline-builder-block' ) }
+											label={ __( 'Move up', 'wbd-timeline-builder' ) }
 										/>
 									</Tooltip>
-									<Tooltip text={ __( 'Move down', 'timeline-builder-block' ) }>
+									<Tooltip text={ __( 'Move down', 'wbd-timeline-builder' ) }>
 										<Button
 											icon={ chevronDown }
 											onClick={ () => moveItem( index, 1 ) }
 											disabled={ index === items.length - 1 }
-											label={ __( 'Move down', 'timeline-builder-block' ) }
+											label={ __( 'Move down', 'wbd-timeline-builder' ) }
 										/>
 									</Tooltip>
-									<Tooltip text={ __( 'Remove item', 'timeline-builder-block' ) }>
+									<Tooltip text={ __( 'Remove item', 'wbd-timeline-builder' ) }>
 										<Button
 											icon={ trash }
 											isDestructive
 											onClick={ () => removeItem( index ) }
-											label={ __( 'Remove item', 'timeline-builder-block' ) }
+											label={ __( 'Remove item', 'wbd-timeline-builder' ) }
 										/>
 									</Tooltip>
 								</div>
@@ -275,7 +275,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									className="tlbb-date"
 									value={ item.date }
 									onChange={ ( value ) => updateItem( index, { date: value } ) }
-									placeholder={ __( 'Date / label…', 'timeline-builder-block' ) }
+									placeholder={ __( 'Date / label…', 'wbd-timeline-builder' ) }
 									allowedFormats={ [] }
 								/>
 
@@ -284,7 +284,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									className="tlbb-title"
 									value={ item.title }
 									onChange={ ( value ) => updateItem( index, { title: value } ) }
-									placeholder={ __( 'Title…', 'timeline-builder-block' ) }
+									placeholder={ __( 'Title…', 'wbd-timeline-builder' ) }
 									allowedFormats={ [ 'core/bold', 'core/italic' ] }
 								/>
 
@@ -299,14 +299,14 @@ export default function Edit( { attributes, setAttributes } ) {
 									className="tlbb-desc"
 									value={ item.description }
 									onChange={ ( value ) => updateItem( index, { description: value } ) }
-									placeholder={ __( 'Description…', 'timeline-builder-block' ) }
+									placeholder={ __( 'Description…', 'wbd-timeline-builder' ) }
 								/>
 
 								<div className="tlbb-item-controls">
 									{ markerStyle === 'icon' && (
 										<TextControl
-											label={ __( 'Dashicon name', 'timeline-builder-block' ) }
-											help={ __( 'e.g. star-filled, calendar, awards', 'timeline-builder-block' ) }
+											label={ __( 'Dashicon name', 'wbd-timeline-builder' ) }
+											help={ __( 'e.g. star-filled, calendar, awards', 'wbd-timeline-builder' ) }
 											value={ item.iconDashicon }
 											onChange={ ( value ) => updateItem( index, { iconDashicon: value } ) }
 											__nextHasNoMarginBottom
@@ -328,8 +328,8 @@ export default function Edit( { attributes, setAttributes } ) {
 												render={ ( { open } ) => (
 													<Button variant="secondary" onClick={ open }>
 														{ item.imageUrl
-															? __( 'Replace image', 'timeline-builder-block' )
-															: __( 'Add image', 'timeline-builder-block' ) }
+															? __( 'Replace image', 'wbd-timeline-builder' )
+															: __( 'Add image', 'wbd-timeline-builder' ) }
 													</Button>
 												) }
 											/>
@@ -342,19 +342,19 @@ export default function Edit( { attributes, setAttributes } ) {
 													updateItem( index, { imageUrl: '', imageId: 0, imageAlt: '' } )
 												}
 											>
-												{ __( 'Remove image', 'timeline-builder-block' ) }
+												{ __( 'Remove image', 'wbd-timeline-builder' ) }
 											</Button>
 										) }
 									</div>
 
 									<TextControl
-										label={ __( 'Link text', 'timeline-builder-block' ) }
+										label={ __( 'Link text', 'wbd-timeline-builder' ) }
 										value={ item.linkText }
 										onChange={ ( value ) => updateItem( index, { linkText: value } ) }
 										__nextHasNoMarginBottom
 									/>
 									<div className="tlbb-url-control">
-										<span className="tlbb-url-label">{ __( 'Link URL', 'timeline-builder-block' ) }</span>
+										<span className="tlbb-url-label">{ __( 'Link URL', 'wbd-timeline-builder' ) }</span>
 										<URLInput
 											value={ item.linkUrl }
 											onChange={ ( url ) => updateItem( index, { linkUrl: url } ) }
@@ -370,7 +370,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				{ items.length > 0 && (
 					<div className="tlbb-add-row">
 						<Button variant="primary" icon={ plus } onClick={ addItem }>
-							{ __( 'Add timeline item', 'timeline-builder-block' ) }
+							{ __( 'Add timeline item', 'wbd-timeline-builder' ) }
 						</Button>
 					</div>
 				) }
