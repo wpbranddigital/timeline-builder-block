@@ -23,6 +23,7 @@ $tlbb_layout      = isset( $attributes['layout'] ) ? sanitize_html_class( $attri
 $tlbb_marker      = isset( $attributes['markerStyle'] ) ? sanitize_html_class( $attributes['markerStyle'] ) : 'dot';
 $tlbb_animation   = isset( $attributes['animation'] ) ? sanitize_html_class( $attributes['animation'] ) : 'fade-up';
 $tlbb_duration    = isset( $attributes['animationDuration'] ) ? absint( $attributes['animationDuration'] ) : 600;
+$tlbb_img_pos     = isset( $attributes['imagePosition'] ) ? sanitize_html_class( $attributes['imagePosition'] ) : 'top';
 
 $tlbb_style_map = array(
 	'--tlbb-line'    => isset( $attributes['lineColor'] ) ? $attributes['lineColor'] : '#e2e8f0',
@@ -34,13 +35,82 @@ $tlbb_style_map = array(
 	'--tlbb-duration' => $tlbb_duration . 'ms',
 );
 
+$responsive_attrs = array(
+	'dateFontSize'     => 'date-fs',
+	'titleFontSize'    => 'title-fs',
+	'descFontSize'     => 'desc-fs',
+	'imageWidth'       => 'img-w',
+	'imageHeight'      => 'img-h',
+	'linkFontSize'     => 'link-fs',
+	'linkPadding'      => 'link-pad',
+);
+
+if ( ! function_exists( 'tlbb_box_to_string' ) ) {
+	function tlbb_box_to_string( $box ) {
+		if ( empty( $box ) ) {
+			return '';
+		}
+		if ( is_string( $box ) ) {
+			return $box;
+		}
+		if ( is_array( $box ) ) {
+			$top    = isset( $box['top'] ) ? $box['top'] : '0';
+			$right  = isset( $box['right'] ) ? $box['right'] : '0';
+			$bottom = isset( $box['bottom'] ) ? $box['bottom'] : '0';
+			$left   = isset( $box['left'] ) ? $box['left'] : '0';
+			return sprintf( '%s %s %s %s', $top, $right, $bottom, $left );
+		}
+		return '';
+	}
+}
+
+foreach ( $responsive_attrs as $attr_key => $css_prefix ) {
+	if ( ! empty( $attributes[ $attr_key ] ) && is_array( $attributes[ $attr_key ] ) ) {
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			if ( ! empty( $attributes[ $attr_key ][ $device ] ) ) {
+				$val = $attributes[ $attr_key ][ $device ];
+				if ( 'linkPadding' === $attr_key ) {
+					$val = tlbb_box_to_string( $val );
+				}
+				$tlbb_style_map[ '--tlbb-' . $css_prefix . '-' . $device ] = $val;
+			}
+		}
+	}
+}
+
+if ( ! empty( $attributes['linkColor'] ) ) {
+	$tlbb_style_map['--tlbb-link-color'] = $attributes['linkColor'];
+}
+if ( ! empty( $attributes['linkBgColor'] ) ) {
+	$tlbb_style_map['--tlbb-link-bg'] = $attributes['linkBgColor'];
+}
+if ( ! empty( $attributes['linkBorderRadius'] ) ) {
+	$tlbb_style_map['--tlbb-link-br'] = $attributes['linkBorderRadius'];
+}
+if ( ! empty( $attributes['dateFontFamily'] ) ) {
+	$tlbb_style_map['--tlbb-date-ff'] = $attributes['dateFontFamily'];
+}
+if ( ! empty( $attributes['titleFontFamily'] ) ) {
+	$tlbb_style_map['--tlbb-title-ff'] = $attributes['titleFontFamily'];
+}
+if ( ! empty( $attributes['descFontFamily'] ) ) {
+	$tlbb_style_map['--tlbb-desc-ff'] = $attributes['descFontFamily'];
+}
+if ( ! empty( $attributes['linkFontFamily'] ) ) {
+	$tlbb_style_map['--tlbb-link-ff'] = $attributes['linkFontFamily'];
+}
+if ( ! empty( $attributes['imageObjectFit'] ) ) {
+	$tlbb_style_map['--tlbb-img-fit'] = $attributes['imageObjectFit'];
+}
+if ( ! empty( $attributes['columns'] ) && is_array( $attributes['columns'] ) ) {
+	$tlbb_style_map['--tlbb-cols-desktop'] = isset( $attributes['columns']['desktop'] ) ? $attributes['columns']['desktop'] : 3;
+	$tlbb_style_map['--tlbb-cols-tablet']  = isset( $attributes['columns']['tablet'] ) ? $attributes['columns']['tablet'] : 2;
+	$tlbb_style_map['--tlbb-cols-mobile']  = isset( $attributes['columns']['mobile'] ) ? $attributes['columns']['mobile'] : 1;
+}
+
 $tlbb_inline_style = '';
 foreach ( $tlbb_style_map as $tlbb_prop => $tlbb_val ) {
-	if ( '--tlbb-duration' === $tlbb_prop ) {
-		$tlbb_inline_style .= $tlbb_prop . ':' . esc_attr( $tlbb_val ) . ';';
-	} else {
-		$tlbb_inline_style .= $tlbb_prop . ':' . esc_attr( sanitize_hex_color( $tlbb_val ) ? $tlbb_val : '' ) . ';';
-	}
+	$tlbb_inline_style .= $tlbb_prop . ':' . esc_attr( $tlbb_val ) . ';';
 }
 
 $tlbb_wrapper_attributes = get_block_wrapper_attributes(
@@ -73,6 +143,10 @@ $tlbb_allowed_inline = array(
 );
 ?>
 <div <?php echo wp_kses_data( $tlbb_wrapper_attributes ); ?>>
+	<?php if ( 'horizontal' === $tlbb_layout ) : ?>
+		<div class="tlbb-nav-prev" aria-label="Previous"><span class="dashicons dashicons-arrow-left-alt2"></span></div>
+		<div class="tlbb-nav-next" aria-label="Next"><span class="dashicons dashicons-arrow-right-alt2"></span></div>
+	<?php endif; ?>
 	<div class="tlbb-track" aria-hidden="true"></div>
 	<div class="tlbb-items">
 		<?php foreach ( $tlbb_items as $tlbb_index => $tlbb_item ) : ?>
@@ -94,6 +168,12 @@ $tlbb_allowed_inline = array(
 					<?php endif; ?>
 				</div>
 				<div class="tlbb-card">
+					<?php if ( 'top' === $tlbb_img_pos && '' !== $tlbb_img ) : ?>
+						<div class="tlbb-image">
+							<img src="<?php echo esc_url( $tlbb_img ); ?>" alt="<?php echo esc_attr( $tlbb_img_alt ); ?>" loading="lazy" />
+						</div>
+					<?php endif; ?>
+
 					<?php if ( '' !== trim( wp_strip_all_tags( $tlbb_date ) ) ) : ?>
 						<span class="tlbb-date"><?php echo wp_kses( $tlbb_date, $tlbb_allowed_inline ); ?></span>
 					<?php endif; ?>
@@ -102,7 +182,7 @@ $tlbb_allowed_inline = array(
 						<h3 class="tlbb-title"><?php echo wp_kses( $tlbb_title, $tlbb_allowed_inline ); ?></h3>
 					<?php endif; ?>
 
-					<?php if ( '' !== $tlbb_img ) : ?>
+					<?php if ( 'after-title' === $tlbb_img_pos && '' !== $tlbb_img ) : ?>
 						<div class="tlbb-image">
 							<img src="<?php echo esc_url( $tlbb_img ); ?>" alt="<?php echo esc_attr( $tlbb_img_alt ); ?>" loading="lazy" />
 						</div>

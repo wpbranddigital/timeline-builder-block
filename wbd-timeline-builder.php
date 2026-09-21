@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       WBD Timeline Builder
+ * Plugin Name:       Timeline Block
  * Plugin URI:        https://wordpress.org/plugins/wbd-timeline-builder/
  * Description:       A native Gutenberg block to build beautiful, responsive animated timelines.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 6.5
- * Requires PHP:      7.4
+ * Requires PHP:      7.4 
  * Author:            WPBrand Digital
  * Author URI:        https://wpbranddigital.org
  * License:           GPL-2.0-or-later
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'WBD_TIMELINE_BUILDER_VERSION', '1.0.1' );
+define( 'WBD_TIMELINE_BUILDER_VERSION', '1.0.2' );
 define( 'WBD_TIMELINE_BUILDER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WBD_TIMELINE_BUILDER_URL', plugin_dir_url( __FILE__ ) );
 

@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useEffect, useRef } from '@wordpress/element';
+import { useEffect, useRef, useState } from '@wordpress/element';
 import {
 	useBlockProps,
 	InspectorControls,
@@ -16,8 +16,139 @@ import {
 	Button,
 	TextControl,
 	Tooltip,
+	ButtonGroup,
+	TabPanel,
+	__experimentalUnitControl as UnitControl,
+	__experimentalBoxControl as BoxControl,
 } from '@wordpress/components';
-import { plus, trash, chevronUp, chevronDown } from '@wordpress/icons';
+import { plus, trash, chevronUp, chevronDown, desktop, tablet, mobile } from '@wordpress/icons';
+
+const ResponsiveControl = ( { label, value, onChange } ) => {
+	const [ device, setDevice ] = useState( 'desktop' );
+	const currentVal = value && value[ device ] !== undefined ? value[ device ] : '';
+
+	return (
+		<div className="tlbb-responsive-control" style={{ marginBottom: '24px' }}>
+			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+				<span style={{ fontSize: '13px' }}>{ label }</span>
+				<ButtonGroup>
+					<Button icon={ desktop } isSmall variant={ device === 'desktop' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'desktop' ) } />
+					<Button icon={ tablet } isSmall variant={ device === 'tablet' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'tablet' ) } />
+					<Button icon={ mobile } isSmall variant={ device === 'mobile' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'mobile' ) } />
+				</ButtonGroup>
+			</div>
+			<UnitControl
+				value={ currentVal }
+				onChange={ ( val ) => onChange( { ...value, [ device ]: val } ) }
+			/>
+		</div>
+	);
+};
+
+const ResponsiveNumberControl = ( { label, value, onChange, min, max } ) => {
+	const [ device, setDevice ] = useState( 'desktop' );
+	const currentVal = value && value[ device ] !== undefined ? value[ device ] : 1;
+
+	return (
+		<div className="tlbb-responsive-control" style={{ marginBottom: '24px' }}>
+			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+				<span style={{ fontSize: '13px' }}>{ label }</span>
+				<ButtonGroup>
+					<Button icon={ desktop } isSmall variant={ device === 'desktop' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'desktop' ) } />
+					<Button icon={ tablet } isSmall variant={ device === 'tablet' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'tablet' ) } />
+					<Button icon={ mobile } isSmall variant={ device === 'mobile' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'mobile' ) } />
+				</ButtonGroup>
+			</div>
+			<RangeControl
+				value={ currentVal }
+				onChange={ ( val ) => onChange( { ...value, [ device ]: val } ) }
+				min={ min }
+				max={ max }
+			/>
+		</div>
+	);
+};
+
+const ResponsiveBoxControl = ( { label, value, onChange } ) => {
+	const [ device, setDevice ] = useState( 'desktop' );
+	const currentVal = value && value[ device ] !== undefined ? value[ device ] : {};
+
+	return (
+		<div className="tlbb-responsive-box-control" style={{ marginBottom: '24px' }}>
+			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+				<span style={{ fontSize: '13px' }}>{ label }</span>
+				<ButtonGroup>
+					<Button icon={ desktop } isSmall variant={ device === 'desktop' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'desktop' ) } />
+					<Button icon={ tablet } isSmall variant={ device === 'tablet' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'tablet' ) } />
+					<Button icon={ mobile } isSmall variant={ device === 'mobile' ? 'primary' : 'tertiary' } onClick={ () => setDevice( 'mobile' ) } />
+				</ButtonGroup>
+			</div>
+			<BoxControl
+				values={ typeof currentVal === 'object' ? currentVal : {} }
+				onChange={ ( val ) => onChange( { ...value, [ device ]: val } ) }
+			/>
+		</div>
+	);
+};
+
+const getBoxString = (box) => {
+    if (!box) return undefined;
+    if (typeof box === 'string') return box;
+    const top = box.top !== undefined ? box.top : '0';
+    const right = box.right !== undefined ? box.right : '0';
+    const bottom = box.bottom !== undefined ? box.bottom : '0';
+    const left = box.left !== undefined ? box.left : '0';
+    return `${top} ${right} ${bottom} ${left}`.trim();
+};
+
+const FONT_FAMILIES = [
+	{ label: __( 'Default', 'wbd-timeline-builder' ), value: '' },
+	{ label: 'Arial', value: 'Arial, sans-serif' },
+	{ label: 'Helvetica', value: 'Helvetica, sans-serif' },
+	{ label: 'Times New Roman', value: '"Times New Roman", Times, serif' },
+	{ label: 'Georgia', value: 'Georgia, serif' },
+	{ label: 'Verdana', value: 'Verdana, sans-serif' },
+	{ label: 'Tahoma', value: 'Tahoma, sans-serif' },
+	{ label: 'Trebuchet MS', value: '"Trebuchet MS", sans-serif' },
+	{ label: 'Roboto', value: 'Roboto, sans-serif' },
+	{ label: 'Open Sans', value: '"Open Sans", sans-serif' },
+	{ label: 'Montserrat', value: 'Montserrat, sans-serif' },
+	{ label: __( 'Custom...', 'wbd-timeline-builder' ), value: 'custom' },
+];
+
+const FontFamilyControl = ( { label, value, onChange } ) => {
+	const isPreset = FONT_FAMILIES.some( f => f.value === value && value !== 'custom' );
+	const isCustom = value && !isPreset;
+	const selectValue = isCustom ? 'custom' : (value || '');
+
+	return (
+		<div style={{ marginBottom: '24px' }}>
+			<SelectControl
+				label={ label }
+				value={ selectValue }
+				options={ FONT_FAMILIES }
+				onChange={ ( v ) => {
+					if ( v !== 'custom' ) {
+						onChange( v );
+					} else {
+						onChange( 'sans-serif' );
+					}
+				} }
+				__nextHasNoMarginBottom
+			/>
+			{ selectValue === 'custom' && (
+				<TextControl
+					label={ __( 'Custom Font Family', 'wbd-timeline-builder' ) }
+					value={ value }
+					onChange={ onChange }
+					help={ __( 'Example: "Open Sans", sans-serif', 'wbd-timeline-builder' ) }
+					__nextHasNoMarginBottom
+					style={{ marginTop: '8px' }}
+				/>
+			) }
+		</div>
+	);
+};
 
 const LAYOUTS = [
 	{ label: __( 'Vertical (alternating)', 'wbd-timeline-builder' ), value: 'vertical-alternate' },
@@ -37,6 +168,29 @@ const MARKERS = [
 	{ label: __( 'Dot', 'wbd-timeline-builder' ), value: 'dot' },
 	{ label: __( 'Ring', 'wbd-timeline-builder' ), value: 'ring' },
 	{ label: __( 'Icon', 'wbd-timeline-builder' ), value: 'icon' },
+];
+
+const DASHICONS = [
+	{ label: __( 'Check (Yes)', 'wbd-timeline-builder' ), value: 'yes' },
+	{ label: __( 'Star', 'wbd-timeline-builder' ), value: 'star-filled' },
+	{ label: __( 'Calendar', 'wbd-timeline-builder' ), value: 'calendar' },
+	{ label: __( 'Awards', 'wbd-timeline-builder' ), value: 'awards' },
+	{ label: __( 'Flag', 'wbd-timeline-builder' ), value: 'flag' },
+	{ label: __( 'Chart Line', 'wbd-timeline-builder' ), value: 'chart-line' },
+	{ label: __( 'Heart', 'wbd-timeline-builder' ), value: 'heart' },
+	{ label: __( 'Location', 'wbd-timeline-builder' ), value: 'location' },
+	{ label: __( 'Megaphone', 'wbd-timeline-builder' ), value: 'megaphone' },
+	{ label: __( 'Lightbulb', 'wbd-timeline-builder' ), value: 'lightbulb' },
+	{ label: __( 'Info', 'wbd-timeline-builder' ), value: 'info' },
+	{ label: __( 'Thumbs Up', 'wbd-timeline-builder' ), value: 'thumbs-up' },
+	{ label: __( 'Clock', 'wbd-timeline-builder' ), value: 'clock' },
+	{ label: __( 'Camera', 'wbd-timeline-builder' ), value: 'camera' },
+	{ label: __( 'Video', 'wbd-timeline-builder' ), value: 'video-alt3' },
+	{ label: __( 'Book', 'wbd-timeline-builder' ), value: 'book' },
+	{ label: __( 'Edit', 'wbd-timeline-builder' ), value: 'edit' },
+	{ label: __( 'Email', 'wbd-timeline-builder' ), value: 'email' },
+	{ label: __( 'Store', 'wbd-timeline-builder' ), value: 'store' },
+	{ label: __( 'Cart', 'wbd-timeline-builder' ), value: 'cart' },
 ];
 
 const emptyItem = () => ( {
@@ -98,10 +252,28 @@ export default function Edit( { attributes, setAttributes } ) {
 		animation,
 		animationDuration,
 		markerStyle,
+		dateFontSize,
+		titleFontSize,
+		descFontSize,
+		imageWidth,
+		imageHeight,
+		linkFontSize,
+		linkPadding,
+		linkColor,
+		linkBgColor,
+		linkBorderRadius,
+		dateFontFamily,
+		titleFontFamily,
+		descFontFamily,
+		linkFontFamily,
+		imageObjectFit,
+		imagePosition,
+		columns,
 	} = attributes;
 
 	// Seed 3 sample items only on a fresh insert (empty block), once.
 	const seeded = useRef( false );
+	const itemsRef = useRef( null );
 	useEffect( () => {
 		if ( ! seeded.current && ( ! items || items.length === 0 ) ) {
 			seeded.current = true;
@@ -143,6 +315,38 @@ export default function Edit( { attributes, setAttributes } ) {
 		'--tlbb-title': titleColor,
 		'--tlbb-date': dateColor,
 		'--tlbb-text': textColor,
+		...( dateFontSize?.desktop && { '--tlbb-date-fs-desktop': dateFontSize.desktop } ),
+		...( dateFontSize?.tablet && { '--tlbb-date-fs-tablet': dateFontSize.tablet } ),
+		...( dateFontSize?.mobile && { '--tlbb-date-fs-mobile': dateFontSize.mobile } ),
+		...( titleFontSize?.desktop && { '--tlbb-title-fs-desktop': titleFontSize.desktop } ),
+		...( titleFontSize?.tablet && { '--tlbb-title-fs-tablet': titleFontSize.tablet } ),
+		...( titleFontSize?.mobile && { '--tlbb-title-fs-mobile': titleFontSize.mobile } ),
+		...( descFontSize?.desktop && { '--tlbb-desc-fs-desktop': descFontSize.desktop } ),
+		...( descFontSize?.tablet && { '--tlbb-desc-fs-tablet': descFontSize.tablet } ),
+		...( descFontSize?.mobile && { '--tlbb-desc-fs-mobile': descFontSize.mobile } ),
+		...( imageWidth?.desktop && { '--tlbb-img-w-desktop': imageWidth.desktop } ),
+		...( imageWidth?.tablet && { '--tlbb-img-w-tablet': imageWidth.tablet } ),
+		...( imageWidth?.mobile && { '--tlbb-img-w-mobile': imageWidth.mobile } ),
+		...( imageHeight?.desktop && { '--tlbb-img-h-desktop': imageHeight.desktop } ),
+		...( imageHeight?.tablet && { '--tlbb-img-h-tablet': imageHeight.tablet } ),
+		...( imageHeight?.mobile && { '--tlbb-img-h-mobile': imageHeight.mobile } ),
+		...( linkFontSize?.desktop && { '--tlbb-link-fs-desktop': linkFontSize.desktop } ),
+		...( linkFontSize?.tablet && { '--tlbb-link-fs-tablet': linkFontSize.tablet } ),
+		...( linkFontSize?.mobile && { '--tlbb-link-fs-mobile': linkFontSize.mobile } ),
+		...( linkPadding?.desktop && { '--tlbb-link-pad-desktop': getBoxString(linkPadding.desktop) } ),
+		...( linkPadding?.tablet && { '--tlbb-link-pad-tablet': getBoxString(linkPadding.tablet) } ),
+		...( linkPadding?.mobile && { '--tlbb-link-pad-mobile': getBoxString(linkPadding.mobile) } ),
+		...( linkColor && { '--tlbb-link-color': linkColor } ),
+		...( linkBgColor && { '--tlbb-link-bg': linkBgColor } ),
+		...( linkBorderRadius && { '--tlbb-link-br': linkBorderRadius } ),
+		...( dateFontFamily && { '--tlbb-date-ff': dateFontFamily } ),
+		...( titleFontFamily && { '--tlbb-title-ff': titleFontFamily } ),
+		...( descFontFamily && { '--tlbb-desc-ff': descFontFamily } ),
+		...( linkFontFamily && { '--tlbb-link-ff': linkFontFamily } ),
+		...( imageObjectFit && { '--tlbb-img-fit': imageObjectFit } ),
+		...( columns?.desktop && { '--tlbb-cols-desktop': columns.desktop } ),
+		...( columns?.tablet && { '--tlbb-cols-tablet': columns.tablet } ),
+		...( columns?.mobile && { '--tlbb-cols-mobile': columns.mobile } ),
 	};
 
 	return (
@@ -163,6 +367,15 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( value ) => setAttributes( { markerStyle: value } ) }
 						__nextHasNoMarginBottom
 					/>
+					{ layout === 'horizontal' && (
+						<ResponsiveNumberControl
+							label={ __( 'Columns per view', 'wbd-timeline-builder' ) }
+							value={ columns }
+							onChange={ ( v ) => setAttributes( { columns: v } ) }
+							min={ 1 }
+							max={ 10 }
+						/>
+					) }
 				</PanelBody>
 
 				<PanelBody title={ __( 'Animation', 'wbd-timeline-builder' ) } initialOpen={ false }>
@@ -183,48 +396,110 @@ export default function Edit( { attributes, setAttributes } ) {
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
+			</InspectorControls>
 
+			<InspectorControls group="styles">
 				<PanelColorSettings
 					title={ __( 'Colors', 'wbd-timeline-builder' ) }
-					initialOpen={ false }
+					initialOpen={ true }
 					colorSettings={ [
-						{
-							value: accentColor,
-							onChange: ( c ) => setAttributes( { accentColor: c } ),
-							label: __( 'Accent / markers', 'wbd-timeline-builder' ),
-						},
-						{
-							value: lineColor,
-							onChange: ( c ) => setAttributes( { lineColor: c } ),
-							label: __( 'Line', 'wbd-timeline-builder' ),
-						},
-						{
-							value: cardBackground,
-							onChange: ( c ) => setAttributes( { cardBackground: c } ),
-							label: __( 'Card background', 'wbd-timeline-builder' ),
-						},
-						{
-							value: titleColor,
-							onChange: ( c ) => setAttributes( { titleColor: c } ),
-							label: __( 'Title', 'wbd-timeline-builder' ),
-						},
-						{
-							value: dateColor,
-							onChange: ( c ) => setAttributes( { dateColor: c } ),
-							label: __( 'Date', 'wbd-timeline-builder' ),
-						},
-						{
-							value: textColor,
-							onChange: ( c ) => setAttributes( { textColor: c } ),
-							label: __( 'Description text', 'wbd-timeline-builder' ),
-						},
+						{ value: accentColor, onChange: ( c ) => setAttributes( { accentColor: c } ), label: __( 'Accent / markers', 'wbd-timeline-builder' ) },
+						{ value: lineColor, onChange: ( c ) => setAttributes( { lineColor: c } ), label: __( 'Line', 'wbd-timeline-builder' ) },
+						{ value: cardBackground, onChange: ( c ) => setAttributes( { cardBackground: c } ), label: __( 'Card background', 'wbd-timeline-builder' ) },
+						{ value: titleColor, onChange: ( c ) => setAttributes( { titleColor: c } ), label: __( 'Title', 'wbd-timeline-builder' ) },
+						{ value: dateColor, onChange: ( c ) => setAttributes( { dateColor: c } ), label: __( 'Date', 'wbd-timeline-builder' ) },
+						{ value: textColor, onChange: ( c ) => setAttributes( { textColor: c } ), label: __( 'Description text', 'wbd-timeline-builder' ) },
+						{ value: linkColor, onChange: ( c ) => setAttributes( { linkColor: c } ), label: __( 'Link Text Color', 'wbd-timeline-builder' ) },
+						{ value: linkBgColor, onChange: ( c ) => setAttributes( { linkBgColor: c } ), label: __( 'Link Background', 'wbd-timeline-builder' ) },
 					] }
 				/>
+
+				<PanelBody title={ __( 'Typography', 'wbd-timeline-builder' ) } initialOpen={ false }>
+					<ResponsiveControl label={ __( 'Date Font Size', 'wbd-timeline-builder' ) } value={ dateFontSize } onChange={ ( v ) => setAttributes( { dateFontSize: v } ) } />
+					<FontFamilyControl label={ __( 'Date Font Family', 'wbd-timeline-builder' ) } value={ dateFontFamily } onChange={ ( v ) => setAttributes( { dateFontFamily: v } ) } />
+					
+					<ResponsiveControl label={ __( 'Title Font Size', 'wbd-timeline-builder' ) } value={ titleFontSize } onChange={ ( v ) => setAttributes( { titleFontSize: v } ) } />
+					<FontFamilyControl label={ __( 'Title Font Family', 'wbd-timeline-builder' ) } value={ titleFontFamily } onChange={ ( v ) => setAttributes( { titleFontFamily: v } ) } />
+					
+					<ResponsiveControl label={ __( 'Description Font Size', 'wbd-timeline-builder' ) } value={ descFontSize } onChange={ ( v ) => setAttributes( { descFontSize: v } ) } />
+					<FontFamilyControl label={ __( 'Description Font Family', 'wbd-timeline-builder' ) } value={ descFontFamily } onChange={ ( v ) => setAttributes( { descFontFamily: v } ) } />
+				</PanelBody>
+
+				<PanelBody title={ __( 'Image Options', 'wbd-timeline-builder' ) } initialOpen={ false }>
+					<ResponsiveControl label={ __( 'Image Width', 'wbd-timeline-builder' ) } value={ imageWidth } onChange={ ( v ) => setAttributes( { imageWidth: v } ) } />
+					<ResponsiveControl label={ __( 'Image Height', 'wbd-timeline-builder' ) } value={ imageHeight } onChange={ ( v ) => setAttributes( { imageHeight: v } ) } />
+					<SelectControl
+						label={ __( 'Image Position', 'wbd-timeline-builder' ) }
+						value={ imagePosition }
+						options={ [
+							{ label: __( 'Top', 'wbd-timeline-builder' ), value: 'top' },
+							{ label: __( 'After Title', 'wbd-timeline-builder' ), value: 'after-title' },
+						] }
+						onChange={ ( v ) => setAttributes( { imagePosition: v } ) }
+						__nextHasNoMarginBottom
+					/>
+					<SelectControl
+						label={ __( 'Image Object Fit', 'wbd-timeline-builder' ) }
+						value={ imageObjectFit }
+						options={ [
+							{ label: 'Cover', value: 'cover' },
+							{ label: 'Contain', value: 'contain' },
+							{ label: 'Fill', value: 'fill' },
+							{ label: 'Scale Down', value: 'scale-down' },
+							{ label: 'None', value: 'none' },
+						] }
+						onChange={ ( v ) => setAttributes( { imageObjectFit: v } ) }
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
+
+				<PanelBody title={ __( 'Link Options', 'wbd-timeline-builder' ) } initialOpen={ false }>
+					<ResponsiveControl label={ __( 'Link Font Size', 'wbd-timeline-builder' ) } value={ linkFontSize } onChange={ ( v ) => setAttributes( { linkFontSize: v } ) } />
+					<FontFamilyControl label={ __( 'Link Font Family', 'wbd-timeline-builder' ) } value={ linkFontFamily } onChange={ ( v ) => setAttributes( { linkFontFamily: v } ) } />
+					<ResponsiveBoxControl label={ __( 'Link Padding', 'wbd-timeline-builder' ) } value={ linkPadding } onChange={ ( v ) => setAttributes( { linkPadding: v } ) } />
+					<div style={{ marginBottom: '24px' }}>
+						<UnitControl label={ __( 'Border Radius', 'wbd-timeline-builder' ) } value={ linkBorderRadius } onChange={ ( v ) => setAttributes( { linkBorderRadius: v } ) } />
+					</div>
+				</PanelBody>
 			</InspectorControls>
 
 			<div { ...blockProps } style={ { ...blockProps.style, ...styleVars } }>
+				{ layout === 'horizontal' && (
+					<>
+						<div
+							className="tlbb-nav-prev"
+							aria-label="Previous"
+							onClick={ () => {
+								if ( itemsRef.current ) {
+									const firstItem = itemsRef.current.querySelector('.tlbb-item');
+									if ( firstItem ) {
+										const itemWidth = firstItem.offsetWidth + 24;
+										itemsRef.current.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+									}
+								}
+							} }
+						>
+							<span className="dashicons dashicons-arrow-left-alt2"></span>
+						</div>
+						<div
+							className="tlbb-nav-next"
+							aria-label="Next"
+							onClick={ () => {
+								if ( itemsRef.current ) {
+									const firstItem = itemsRef.current.querySelector('.tlbb-item');
+									if ( firstItem ) {
+										const itemWidth = firstItem.offsetWidth + 24;
+										itemsRef.current.scrollBy({ left: itemWidth, behavior: 'smooth' });
+									}
+								}
+							} }
+						>
+							<span className="dashicons dashicons-arrow-right-alt2"></span>
+						</div>
+					</>
+				) }
 				<div className="tlbb-track" aria-hidden="true"></div>
-				<div className="tlbb-items">
+				<div className="tlbb-items" ref={ itemsRef }>
 					{ items.length === 0 && (
 						<div className="tlbb-empty">
 							<p>{ __( 'No timeline items yet.', 'wbd-timeline-builder' ) }</p>
@@ -270,6 +545,12 @@ export default function Edit( { attributes, setAttributes } ) {
 									</Tooltip>
 								</div>
 
+								{ imagePosition === 'top' && item.imageUrl && (
+									<div className="tlbb-image">
+										<img src={ item.imageUrl } alt={ item.imageAlt || '' } />
+									</div>
+								) }
+
 								<RichText
 									tagName="span"
 									className="tlbb-date"
@@ -288,7 +569,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									allowedFormats={ [ 'core/bold', 'core/italic' ] }
 								/>
 
-								{ item.imageUrl && (
+								{ imagePosition === 'after-title' && item.imageUrl && (
 									<div className="tlbb-image">
 										<img src={ item.imageUrl } alt={ item.imageAlt || '' } />
 									</div>
@@ -304,10 +585,10 @@ export default function Edit( { attributes, setAttributes } ) {
 
 								<div className="tlbb-item-controls">
 									{ markerStyle === 'icon' && (
-										<TextControl
-											label={ __( 'Dashicon name', 'wbd-timeline-builder' ) }
-											help={ __( 'e.g. star-filled, calendar, awards', 'wbd-timeline-builder' ) }
+										<SelectControl
+											label={ __( 'Select Icon', 'wbd-timeline-builder' ) }
 											value={ item.iconDashicon }
+											options={ DASHICONS }
 											onChange={ ( value ) => updateItem( index, { iconDashicon: value } ) }
 											__nextHasNoMarginBottom
 										/>

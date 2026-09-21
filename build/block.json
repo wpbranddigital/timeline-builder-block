@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "wbd-timeline-builder/timeline",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "title": "WBD Timeline Builder",
   "category": "widgets",
   "icon": "clock",
@@ -12,7 +12,18 @@
     "history",
     "roadmap",
     "steps",
-    "milestones"
+    "history-timeline",
+    "timeline-history",
+    "milestones",
+    "gutenberg",
+    "block",
+    "timeline-block",
+    "timeline-builder",
+    "timeline-block-gutenberg",
+    "wbd-timeline-block",
+    "wbd-timeline-builder-block",
+    "wbd-timeline-builder-block-gutenberg",
+    "event-timeline"
   ],
   "supports": {
     "html": false,
@@ -70,6 +81,106 @@
     "markerStyle": {
       "type": "string",
       "default": "dot"
+    },
+    "dateFontSize": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "titleFontSize": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "descFontSize": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "imageWidth": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "imageHeight": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "imageObjectFit": {
+      "type": "string",
+      "default": "cover"
+    },
+    "imagePosition": {
+      "type": "string",
+      "default": "top"
+    },
+    "columns": {
+      "type": "object",
+      "default": {
+        "desktop": 3,
+        "tablet": 2,
+        "mobile": 1
+      }
+    },
+    "linkFontSize": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "linkPadding": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "linkColor": {
+      "type": "string",
+      "default": ""
+    },
+    "linkBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "linkBorderRadius": {
+      "type": "string",
+      "default": ""
+    },
+    "dateFontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "titleFontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "descFontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "linkFontFamily": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "wbd-timeline-builder",

@@ -12,7 +12,7 @@
 	--tlbb-a-soft: #f8fafc;
 	--tlbb-a-radius: 16px;
 
-	max-width: 1080px;
+	max-width: 100%;
 	margin: 20px 20px 40px 0;
 	color: var(--tlbb-a-ink);
 	font-size: 14px;
